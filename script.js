@@ -1,10 +1,7 @@
 //  DEFINE VARIABLES
-var timeBlockHour = $(".hour").text();
-console.log(timeBlockHour);
-var nextTimeBlockHour = timeBlockHour++;
 var currentTime = moment().format("HH");
+var currentTimeInt = parseInt(currentTime);
 var saveBtn = $(".saveBtn");
-
 
 
 // set data attributes to each hour input element
@@ -22,16 +19,14 @@ $("#5Row").attr("data-time", moment("5:00 pm", "h:mm a").format("HH"));
 
 
 
-
 $(document).ready(function () {
 
     // call the function to populate the input values with stored data
     renderPlans();
 
+
     //  ADD CURRENT DATE AT THE TOP OF THE PAGE
 
-    // some testing to make sure the format is correct
-    console.log(moment().format("dddd, MMMM Do"));
     // set variable to the current day. Formatting info found at https://momentjs.com/docs/
     var currentDay = moment().format("dddd, MMMM Do");
     // set the text of the p tag as the current day
@@ -39,6 +34,31 @@ $(document).ready(function () {
 
 
     //  CHANGE INPUT BOX COLOR BASED ON TIME OF DAY
+
+    // set a variable imputTime to represent the input block's corresponding time with a for loop
+    for (var j = 1; j <= 12; j++) {
+        var inputTime = $("#" + j + "Row").attr("data-time");
+        var inputTimeInt = parseInt(inputTime);
+        console.log(inputTimeInt);
+
+        // Set color styling based on comparisons between the currentTimeInt and the inputTimeInt
+        if (currentTimeInt === inputTimeInt){
+            $("#" + j + "Row").addClass("present");
+            
+        }
+
+        if (currentTimeInt > inputTimeInt){
+            $("#" + j + "Row").addClass("past");
+        }
+
+        if (currentTimeInt < inputTimeInt){
+            $("#" + j + "Row").addClass("future");
+        }
+
+    }
+
+   
+
 
 
     //  BUTTON HOVER 
