@@ -1,5 +1,7 @@
 //  DEFINE VARIABLES
+// HH format for a 24hr clock
 var currentTime = moment().format("HH");
+// parse the current time so we can compare it with another number later
 var currentTimeInt = parseInt(currentTime);
 var saveBtn = $(".saveBtn");
 
@@ -63,6 +65,7 @@ $(document).ready(function () {
 
     //  BUTTON HOVER 
 
+    // source for mouse events: https://api.jquery.com/
     saveBtn.on("mouseenter", function () {
         $(this).addClass('hover');
     });

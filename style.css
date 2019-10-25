@@ -66,9 +66,8 @@ textarea{
 }
 
 .hover {
-  background-color: rgb(129, 204, 129);
+  background-color: orange;
 }
-
 
 .save-icon {
   height: 20px;
